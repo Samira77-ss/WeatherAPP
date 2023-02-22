@@ -10,15 +10,7 @@ function formatDate(timestamp) {
     minutes = `0${minutes}`;
   }
 
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[date.getDay()];
   let months = [
     "Jan",
@@ -35,7 +27,7 @@ function formatDate(timestamp) {
     "Dec",
   ];
   let month = months[date.getMonth()];
-  return `${day},  ${month}, ${hours}:${minutes} ${ampm}`;
+  return `${day},  ${month} ${date.getDate()}, ${hours}:${minutes} ${ampm}`;
 }
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -45,7 +37,6 @@ function formatDay(timestamp) {
   return days[day];
 }
 function displayWeatherCondition(response) {
-  console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
